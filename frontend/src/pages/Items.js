@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useData } from '../state/DataContext';
 import { Link } from 'react-router-dom';
 import { FixedSizeList } from 'react-window'
+import AutoSizer from 'react-virtualized-auto-sizer'
 
 function Items() {
   const { items, fetchItems } = useData();
@@ -26,15 +27,20 @@ function Items() {
   );
 
   return (
-    <ul>
-      <FixedSizeList
-        height={window.innerHeight}
-        width={'100vw'}
-        itemCount={items.length}
-        itemSize={28}
-      >
-        {ListItem}
-      </FixedSizeList>
+    <ul style={{ height: '100vh', width: '100vw' }}>
+      <AutoSizer>
+        {({ height, width }) => (
+
+          <FixedSizeList
+            height={height}
+            width={width}
+            itemCount={items.length}
+            itemSize={28}
+          >
+            {ListItem}
+          </FixedSizeList>
+        )}
+      </AutoSizer>
     </ul>
   );
 }
