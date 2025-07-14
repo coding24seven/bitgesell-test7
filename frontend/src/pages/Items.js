@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useData } from '../state/DataContext';
 import { Link } from 'react-router-dom';
+import { FixedSizeList } from 'react-window'
 
 function Items() {
   const { items, fetchItems } = useData();
@@ -18,13 +19,22 @@ function Items() {
 
   if (!items.length) return <p>Loading...</p>;
 
+  const ListItem = ({ index, style }) => (
+    <li style={style}>
+      <Link to={`/items/${items[index].id}`}>{items[index].name}</Link>
+    </li>
+  );
+
   return (
     <ul>
-      {items.map(item => (
-        <li key={item.id}>
-          <Link to={'/items/' + item.id}>{item.name}</Link>
-        </li>
-      ))}
+      <FixedSizeList
+        height={window.innerHeight}
+        width={'100vw'}
+        itemCount={items.length}
+        itemSize={28}
+      >
+        {ListItem}
+      </FixedSizeList>
     </ul>
   );
 }
