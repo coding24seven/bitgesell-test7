@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { memoizedMean } = require('../utils/stats');
 const router = express.Router();
 const DATA_PATH = path.join(__dirname, '../../../data/items.json');
 
@@ -13,7 +14,7 @@ router.get('/', (req, res, next) => {
     // Intentional heavy CPU calculation
     const stats = {
       total: items.length,
-      averagePrice: items.reduce((acc, cur) => acc + cur.price, 0) / items.length
+      averagePrice: memoizedMean(items)
     };
 
     res.json(stats);
