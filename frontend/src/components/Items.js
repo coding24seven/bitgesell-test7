@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useData } from '../state/DataContext';
 import { Link } from 'react-router-dom';
 import { FixedSizeList } from 'react-window'
@@ -18,7 +18,7 @@ function Items() {
     };
   }, [fetchItems]);
 
-  if (!items.length) return <p>Loading...</p>;
+  if (items.length === 0) return <p>Loading...</p>;
 
   const ListItem = ({ index, style }) => (
     <li style={style}>
