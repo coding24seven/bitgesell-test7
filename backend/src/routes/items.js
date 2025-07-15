@@ -25,12 +25,14 @@ router.get('/', async (req, res, next) => {
       items = items.filter(item => item.name.toLowerCase().includes(q.toLowerCase()));
     }
 
+    const total = items.length
+
     if (limit) {
       const offset = (pageAsNumber - 1) * limitAsNumber
       items = items.slice(offset, offset + limitAsNumber);
     }
 
-    res.json({ items, total: data.length });
+    res.json({ items, total });
   } catch (err) {
     next(err);
   }
