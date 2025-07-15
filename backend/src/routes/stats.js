@@ -7,7 +7,7 @@ const DATA_PATH = path.join(__dirname, '../../../data/items.json');
 
 // GET /api/stats
 router.get('/', (req, res, next) => {
-  fs.readFile(DATA_PATH, (err, raw) => {
+  fs.readFile(DATA_PATH, 'utf-8', (err, raw) => {
     if (err) return next(err);
 
     const items = JSON.parse(raw);

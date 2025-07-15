@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-const DataContext = createContext();
+const DataContext = createContext({});
 
 export function DataProvider({ children }) {
   const [items, setItems] = useState([]);
@@ -12,7 +12,7 @@ export function DataProvider({ children }) {
   const pagesTotal = Math.ceil(itemsTotal / limit)
 
   useEffect(() => {
-    setPageNumber(1)
+    setPageNumber('1')
   }, [searchTerm])
 
   const fetchItems = useCallback(async (controller) => {
@@ -34,9 +34,9 @@ export function DataProvider({ children }) {
   }, [searchTerm, pageNumber]);
 
   return (
-    <DataContext.Provider value={{ items, pageNumber, pagesTotal, fetchItems, setSearchTerm, setPageNumber }}>
-      {children}
-    </DataContext.Provider>
+      <DataContext.Provider value={{ items, pageNumber, pagesTotal, fetchItems, setSearchTerm, setPageNumber }}>
+        {children}
+      </DataContext.Provider>
   );
 }
 

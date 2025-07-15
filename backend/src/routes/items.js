@@ -6,7 +6,7 @@ const DATA_PATH = path.join(__dirname, '../../../data/items.json');
 
 // Utility to read data (intentionally sync to highlight blocking issue)
 async function readData() {
-  const raw = await fs.readFile(DATA_PATH);
+  const raw = await fs.readFile(DATA_PATH, 'utf-8');
   return JSON.parse(raw);
 }
 
@@ -17,8 +17,8 @@ router.get('/', async (req, res, next) => {
     const { limit, q, page } = req.query;
     let items = data;
 
-    limitAsNumber = Number(limit)
-    pageAsNumber = Number(page)
+    const limitAsNumber = Number(limit)
+    const pageAsNumber = Number(page)
 
     if (q) {
       // Simple substring search (sub‑optimal)
