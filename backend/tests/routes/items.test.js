@@ -19,6 +19,14 @@ describe('GET', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual(itemFromFile);
   });
+
+  it('returns 404 for non-existing item', async () => {
+    const itemId = 999999999
+
+    const response = await request(app)
+        .get(`/api/items/${itemId}`)
+    expect(response.status).toEqual(404);
+  });
 });
 
 describe('POST', () => {

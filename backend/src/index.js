@@ -17,7 +17,7 @@ app.use('/api/items', itemsRouter);
 app.use('/api/stats', statsRouter);
 
 // Not Found
-// app.use('*', notFound);
+app.use('*', notFound);
 
 // getCookie();
 
