@@ -19,6 +19,6 @@ app.use('/api/stats', statsRouter);
 // Not Found
 app.use('*', notFound);
 
-// getCookie();
+// getCookie(); // this causes issues
 
 module.exports = app
