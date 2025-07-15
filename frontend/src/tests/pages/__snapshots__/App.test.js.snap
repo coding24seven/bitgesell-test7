@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders initial content 1`] = `
+<div>
+  <nav
+    style="padding: 16px; border-bottom: 1px solid #ddd;"
+  >
+    <a
+      href="/"
+    >
+      Items
+    </a>
+    <br />
+    <a
+      href="/unmount"
+    >
+      Unmount Items.js while items are loading
+    </a>
+  </nav>
+  <input />
+  <button>
+    Search
+  </button>
+  <label>
+    Page
+    <input
+      max="0"
+      min="1"
+      style="width: 60px;"
+      type="number"
+      value="1"
+    />
+  </label>
+  <p>
+    Loading...
+  </p>
+</div>
+`;
+
+exports[`renders App component 1`] = `
+<div>
+  <nav
+    style="padding: 16px; border-bottom: 1px solid #ddd;"
+  >
+    <a
+      href="/"
+    >
+      Items
+    </a>
+    <br />
+    <a
+      href="/unmount"
+    >
+      Unmount Items.js while items are loading
+    </a>
+  </nav>
+  <input />
+  <button>
+    Search
+  </button>
+  <label>
+    Page
+    <input
+      max="0"
+      min="1"
+      style="width: 60px;"
+      type="number"
+      value="1"
+    />
+  </label>
+  <p>
+    Loading...
+  </p>
+</div>
+`;
