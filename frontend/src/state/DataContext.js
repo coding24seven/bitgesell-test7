@@ -17,7 +17,7 @@ export function DataProvider({ children }) {
 
   const fetchItems = useCallback(async (controller) => {
 
-    // simulate some request duration
+    // simulate request duration - increase it to say 2000ms, then click 'Unmount Items.js while items are loading' link in browser, and observe devtools console to see how the memory leak is being prevented
     setTimeout(async () => {
       let parsedJson
 
@@ -26,11 +26,11 @@ export function DataProvider({ children }) {
         parsedJson = await res.json();
         setItems(parsedJson.items);
         setItemsTotal(parsedJson.total)
-        console.log('following items have been set:', parsedJson);
+        console.log('following items have been set:', parsedJson.items);
       } catch {
         console.warn('request interrupted. following items have not been set:', parsedJson);
       }
-    }, 1000);
+    }, 100);
   }, [searchTerm, pageNumber]);
 
   return (
